@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Mouse Trail</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .trail {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ff0000; /* Initial color */
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header"><a class="navbar-brand" href="index.html"><img class="small" src="https://th.bing.com/th/id/OIP.5k9lAbKAudgFnpyG4w-bNQHaFk?w=229&h=180&c=7&r=0&o=5&pid=1.7"></a></div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html"><span class = "glyphicon glyphicon-home"> Home</span></a></li>
+                    <li><a href="about.html"><span class ="glyphicon glyphicon-question-sign"></span> About</a></li>
+                    <li><a href="contact.html"><span class = "glyphicon glyphicon-earphone"></span> Contact</a></li>
+                    <li><a href = "canvas.html">Canvas</a></li>
+                    <li><a href = "gallery.html">Gallery</a></li>
+                    <li><a href = "game.html">Game</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to create a new colored circle
+        function createColoredCircle(event) {
+            const coloredCircle = document.createElement('div');
+            coloredCircle.classList.add('trail');
+            coloredCircle.style.left = event.clientX + 'px';
+            coloredCircle.style.top = event.clientY + 'px';
+            changeColor(coloredCircle); // Change color of the new circle
+            document.body.appendChild(coloredCircle);
+        }
+        
+        // Function to change the color of a circle
+        function changeColor(circle) {
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            circle.style.backgroundColor = randomColor;
+        }
+        
+        // Create colored circle on mouse click
+        document.addEventListener("click", function(event) {
+            createColoredCircle(event);
+        });
+    });
+</script>
+</body>
+</html>
